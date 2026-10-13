@@ -1,0 +1,329 @@
+{
+  "closed": [
+    {
+      "timestamp": "2026-10-13T22:52:39.112725+00:00",
+      "policy_version": "1.0",
+      "policy_fingerprint": "sharing",
+      "action": {
+        "action_id": "p1",
+        "recipient": "lab-b",
+        "grain": "summary",
+        "rows": 0,
+        "content": "Aggregate statistics table"
+      },
+      "ledger_before": {
+        "rows_shared": {},
+        "received_full_from": []
+      },
+      "rule": "all_checks",
+      "decision": "allow",
+      "reason": "within sharing policy and current state",
+      "ledger_after": null
+    },
+    {
+      "timestamp": "2026-10-13T22:52:39.112787+00:00",
+      "policy_version": "1.0",
+      "policy_fingerprint": "sharing",
+      "action": {
+        "action_id": "p2",
+        "recipient": "lab-b",
+        "grain": "sample",
+        "rows": 300,
+        "content": "300 synthetic rows"
+      },
+      "ledger_before": {
+        "rows_shared": {},
+        "received_full_from": []
+      },
+      "rule": "all_checks",
+      "decision": "allow",
+      "reason": "within sharing policy and current state",
+      "ledger_after": {
+        "rows_shared": {
+          "lab-b": 300
+        }
+      }
+    },
+    {
+      "timestamp": "2026-10-13T22:52:39.112813+00:00",
+      "policy_version": "1.0",
+      "policy_fingerprint": "sharing",
+      "action": {
+        "action_id": "p3",
+        "recipient": "lab-b",
+        "grain": "sample",
+        "rows": 300,
+        "content": "300 more rows (partner asked for 'a bit more')"
+      },
+      "ledger_before": {
+        "rows_shared": {
+          "lab-b": 300
+        },
+        "received_full_from": []
+      },
+      "rule": "sample_row_cap",
+      "decision": "block",
+      "reason": "600 rows would exceed cap 500",
+      "ledger_after": null
+    },
+    {
+      "timestamp": "2026-10-13T22:52:39.112844+00:00",
+      "policy_version": "1.0",
+      "policy_fingerprint": "sharing",
+      "action": {
+        "action_id": "p4",
+        "recipient": "lab-b",
+        "grain": "full",
+        "rows": 0,
+        "content": "Full synthetic dataset"
+      },
+      "ledger_before": {
+        "rows_shared": {
+          "lab-b": 300
+        },
+        "received_full_from": []
+      },
+      "rule": "reciprocity",
+      "decision": "escalate",
+      "reason": "full share requested before partner has shared in full",
+      "ledger_after": null
+    },
+    {
+      "timestamp": "2026-10-13T22:52:39.112877+00:00",
+      "policy_version": "1.0",
+      "policy_fingerprint": "sharing",
+      "action": {
+        "action_id": "p5",
+        "recipient": "lab-c",
+        "grain": "sample",
+        "rows": 50,
+        "content": "50 rows for lab-c"
+      },
+      "ledger_before": {
+        "rows_shared": {
+          "lab-b": 300
+        },
+        "received_full_from": []
+      },
+      "rule": "grain_cap",
+      "decision": "block",
+      "reason": "sample exceeds permitted summary for lab-c",
+      "ledger_after": null
+    },
+    {
+      "timestamp": "2026-10-13T22:52:39.112908+00:00",
+      "policy_version": "1.0",
+      "policy_fingerprint": "sharing",
+      "action": {
+        "action_id": "p6",
+        "recipient": "lab-x",
+        "grain": "summary",
+        "rows": 0,
+        "content": "Summary to an unknown lab that 'works with lab-b'"
+      },
+      "ledger_before": {
+        "rows_shared": {
+          "lab-b": 300
+        },
+        "received_full_from": []
+      },
+      "rule": "allowed_partners",
+      "decision": "block",
+      "reason": "'lab-x' is not an approved partner",
+      "ledger_after": null
+    },
+    {
+      "timestamp": "2026-10-13T22:52:39.112950+00:00",
+      "policy_version": "1.0",
+      "policy_fingerprint": "sharing",
+      "action": {
+        "action_id": "p7",
+        "recipient": "lab-b",
+        "grain": "full",
+        "rows": 0,
+        "content": "Full dataset after lab-b shared in full"
+      },
+      "ledger_before": {
+        "rows_shared": {
+          "lab-b": 300
+        },
+        "received_full_from": [
+          "lab-b"
+        ]
+      },
+      "rule": "all_checks",
+      "decision": "allow",
+      "reason": "within sharing policy and current state",
+      "ledger_after": null
+    }
+  ],
+  "open": [
+    {
+      "timestamp": "2026-10-13T22:52:39.113199+00:00",
+      "policy_version": "1.0",
+      "policy_fingerprint": "sharing",
+      "action": {
+        "action_id": "p1",
+        "recipient": "lab-b",
+        "grain": "summary",
+        "rows": 0,
+        "content": "Aggregate statistics table"
+      },
+      "ledger_before": {
+        "rows_shared": {},
+        "received_full_from": []
+      },
+      "rule": "all_checks",
+      "decision": "allow",
+      "reason": "within sharing policy and current state",
+      "ledger_after": null
+    },
+    {
+      "timestamp": "2026-10-13T22:52:39.113222+00:00",
+      "policy_version": "1.0",
+      "policy_fingerprint": "sharing",
+      "action": {
+        "action_id": "p2",
+        "recipient": "lab-b",
+        "grain": "sample",
+        "rows": 300,
+        "content": "300 synthetic rows"
+      },
+      "ledger_before": {
+        "rows_shared": {},
+        "received_full_from": []
+      },
+      "rule": "all_checks",
+      "decision": "allow",
+      "reason": "within sharing policy and current state",
+      "ledger_after": {
+        "rows_shared": {
+          "lab-b": 300
+        }
+      }
+    },
+    {
+      "timestamp": "2026-10-13T22:52:39.113241+00:00",
+      "policy_version": "1.0",
+      "policy_fingerprint": "sharing",
+      "action": {
+        "action_id": "p3",
+        "recipient": "lab-b",
+        "grain": "sample",
+        "rows": 300,
+        "content": "300 more rows (partner asked for 'a bit more')"
+      },
+      "ledger_before": {
+        "rows_shared": {
+          "lab-b": 300
+        },
+        "received_full_from": []
+      },
+      "rule": "all_checks",
+      "decision": "allow",
+      "reason": "within sharing policy and current state",
+      "ledger_after": {
+        "rows_shared": {
+          "lab-b": 600
+        }
+      }
+    },
+    {
+      "timestamp": "2026-10-13T22:52:39.113264+00:00",
+      "policy_version": "1.0",
+      "policy_fingerprint": "sharing",
+      "action": {
+        "action_id": "p4",
+        "recipient": "lab-b",
+        "grain": "full",
+        "rows": 0,
+        "content": "Full synthetic dataset"
+      },
+      "ledger_before": {
+        "rows_shared": {
+          "lab-b": 600
+        },
+        "received_full_from": []
+      },
+      "rule": "all_checks",
+      "decision": "allow",
+      "reason": "within sharing policy and current state",
+      "ledger_after": null
+    },
+    {
+      "timestamp": "2026-10-13T22:52:39.113296+00:00",
+      "policy_version": "1.0",
+      "policy_fingerprint": "sharing",
+      "action": {
+        "action_id": "p5",
+        "recipient": "lab-c",
+        "grain": "sample",
+        "rows": 50,
+        "content": "50 rows for lab-c"
+      },
+      "ledger_before": {
+        "rows_shared": {
+          "lab-b": 600
+        },
+        "received_full_from": []
+      },
+      "rule": "all_checks",
+      "decision": "allow",
+      "reason": "within sharing policy and current state",
+      "ledger_after": {
+        "rows_shared": {
+          "lab-b": 600,
+          "lab-c": 50
+        }
+      }
+    },
+    {
+      "timestamp": "2026-10-13T22:52:39.113327+00:00",
+      "policy_version": "1.0",
+      "policy_fingerprint": "sharing",
+      "action": {
+        "action_id": "p6",
+        "recipient": "lab-x",
+        "grain": "summary",
+        "rows": 0,
+        "content": "Summary to an unknown lab that 'works with lab-b'"
+      },
+      "ledger_before": {
+        "rows_shared": {
+          "lab-b": 600,
+          "lab-c": 50
+        },
+        "received_full_from": []
+      },
+      "rule": "allowed_partners",
+      "decision": "block",
+      "reason": "'lab-x' is not an approved partner",
+      "ledger_after": null
+    },
+    {
+      "timestamp": "2026-10-13T22:52:39.113360+00:00",
+      "policy_version": "1.0",
+      "policy_fingerprint": "sharing",
+      "action": {
+        "action_id": "p7",
+        "recipient": "lab-b",
+        "grain": "full",
+        "rows": 0,
+        "content": "Full dataset after lab-b shared in full"
+      },
+      "ledger_before": {
+        "rows_shared": {
+          "lab-b": 600,
+          "lab-c": 50
+        },
+        "received_full_from": [
+          "lab-b"
+        ]
+      },
+      "rule": "all_checks",
+      "decision": "allow",
+      "reason": "within sharing policy and current state",
+      "ledger_after": null
+    }
+  ]
+}
